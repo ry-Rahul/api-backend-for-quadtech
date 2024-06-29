@@ -29,6 +29,9 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(public_path, "index.html"));
 });
 
+app.get("/about", (req, res) => {
+    res.status(200).json({ message: "About page" });
+});
 
 app.use('/api', router);
 
