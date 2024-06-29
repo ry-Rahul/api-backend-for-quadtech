@@ -5,6 +5,7 @@ import router from "./routes/api.js";
 import colors from "colors";
 import path from "path";
 import dotenv from "dotenv";
+import { getTickerData } from "./controller/ticker.js";
 
 
 dotenv.config();
@@ -25,6 +26,9 @@ const public_path = path.join(__dirname, "public");
 app.use(express.static(public_path));
 
 app.use('/api', router);
+
+app.get('/getall',getTickerData)
+
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(public_path, "index.html"));
