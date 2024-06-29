@@ -6,6 +6,7 @@ import colors from "colors";
 import path from "path";
 import dotenv from "dotenv";
 import { getTickerData } from "./controller/ticker.js";
+import cors  from "cors";
 
 
 dotenv.config();
@@ -18,6 +19,7 @@ fetchData();
 
 const app = express(); 
 const PORT = process.env.PORT || 3000;
+app.use(cors());
 
 
 // Load index.html
@@ -25,7 +27,7 @@ const __dirname = path.resolve();
 const public_path = path.join(__dirname, "public");
 app.use(express.static(public_path));
 
-app.use('/api', router);
+// app.use('/api', router);
 
 app.get('/getall',getTickerData)
 
